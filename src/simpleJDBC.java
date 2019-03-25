@@ -44,12 +44,13 @@ class simpleJDBC {
 			
 			
 			if(option == 1) {
-				// Option 1: "show items that must be restocked, and decide which items to restock."
+				// Option 1: show items that must be restocked, and decide which items to restock.
 				try {
-					boolean restock = true;
+					boolean restock = true; 
+					//get items that have a quantity less than the minimum
 					String querySQL = "SELECT name, quantityInStock, minimumQuantity FROM item WHERE (quantityInStock < minimumQuantity) "
 							+ "ORDER BY quantityInStock ASC";
-					System.out.println(querySQL);
+					//System.out.println(querySQL);
 					java.sql.ResultSet rs = statement.executeQuery(querySQL);
 					while (rs.next()) {
 						int quantityInStock = rs.getInt(2);
@@ -60,14 +61,14 @@ class simpleJDBC {
 						System.out.println("minimumQuantity:  " + minimumQuantity);
 					}
 
-					System.out.println(querySQL);
-					java.sql.ResultSet ri = statement.executeQuery(querySQL);
+					//System.out.println(querySQL);
+					java.sql.ResultSet ri = statement.executeQuery(querySQL); //query again
 					while (ri.next()) {
 						int quantityInStock = ri.getInt(2);
 						String name = ri.getString(1);
 						int minimumQuantity = ri.getInt(3);
 
-						while (restock) {
+						while (restock) { //have more items to restock
 							System.out.println("select item to restock: ");
 							String itemRestock = reader.nextLine();
 							System.out.println(itemRestock);
@@ -93,16 +94,15 @@ class simpleJDBC {
 					sqlCode = e.getErrorCode(); // Get SQLCODE
 					sqlState = e.getSQLState(); // Get SQLSTATE
 
-					// Your code to handle errors comes here;
-					// something more meaningful than a print would be good
 					System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
 				} 
 
 			}
 			
 			else if(option == 2) {
-				// Option 2: "show items price low -> high"
+				// Option 2: show items price low -> high
 				try {
+					//get items with price ordered from lowest price to highest
 					String querySQL = "SELECT name, price FROM item ORDER BY price ASC";
 					System.out.println(querySQL);
 					java.sql.ResultSet rs = statement.executeQuery(querySQL);
@@ -116,19 +116,18 @@ class simpleJDBC {
 				} catch (SQLException e) {
 					sqlCode = e.getErrorCode(); // Get SQLCODE
 					sqlState = e.getSQLState(); // Get SQLSTATE
-
-					// Your code to handle errors comes here;
-					// something more meaningful than a print would be good
+					
 					System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
 				} 
 				
 			}
 			
 			else if(option == 3) {
-				// Option 3: "show order status 
+				// Option 3: show order status for each tracking number 
 				try {
 					System.out.println("Enter order number: ");
 					String orderid = reader.nextLine();
+					//get order info: status, date ordered, and name of the courier
 					String querySQL = "SELECT status, date_ordered, courier_name FROM order WHERE order_id = \'" + orderid + "\' ORDER BY status, date_ordered";
 					System.out.println(querySQL);
 					java.sql.ResultSet rs = statement.executeQuery(querySQL);
@@ -144,9 +143,6 @@ class simpleJDBC {
 				} catch (SQLException e) {
 					sqlCode = e.getErrorCode(); // Get SQLCODE
 					sqlState = e.getSQLState(); // Get SQLSTATE
-
-					// Your code to handle errors comes here;
-					// something more meaningful than a print would be good
 					System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
 				} 
 				
