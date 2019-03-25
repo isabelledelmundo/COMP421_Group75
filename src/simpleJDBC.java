@@ -104,7 +104,7 @@ class simpleJDBC {
 				try {
 					//get items with price ordered from lowest price to highest
 					String querySQL = "SELECT name, price FROM item ORDER BY price ASC";
-					System.out.println(querySQL);
+					//System.out.println(querySQL);
 					java.sql.ResultSet rs = statement.executeQuery(querySQL);
 					while (rs.next()) {
 						int price = rs.getInt(2);
@@ -129,7 +129,7 @@ class simpleJDBC {
 					String orderid = reader.nextLine();
 					//get order info: status, date ordered, and name of the courier
 					String querySQL = "SELECT status, date_ordered, courier_name FROM order WHERE order_id = \'" + orderid + "\' ORDER BY status, date_ordered";
-					System.out.println(querySQL);
+					//System.out.println(querySQL);
 					java.sql.ResultSet rs = statement.executeQuery(querySQL);
 					while (rs.next()) {
 						String status = rs.getString(1);
