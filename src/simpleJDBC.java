@@ -1,5 +1,4 @@
 import java.sql.*;
-//import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
@@ -93,8 +92,7 @@ class simpleJDBC {
 					sqlCode = e.getErrorCode(); // Get SQLCODE
 					sqlState = e.getSQLState(); // Get SQLSTATE
 
-					// Your code to handle errors comes here;
-					// something more meaningful than a print would be good
+					
 					System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
 				} 
 
@@ -117,8 +115,7 @@ class simpleJDBC {
 					sqlCode = e.getErrorCode(); // Get SQLCODE
 					sqlState = e.getSQLState(); // Get SQLSTATE
 
-					// Your code to handle errors comes here;
-					// something more meaningful than a print would be good
+					
 					System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
 				} 
 				
@@ -145,8 +142,7 @@ class simpleJDBC {
 					sqlCode = e.getErrorCode(); // Get SQLCODE
 					sqlState = e.getSQLState(); // Get SQLSTATE
 
-					// Your code to handle errors comes here;
-					// something more meaningful than a print would be good
+					
 					System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
 				} 
 				
@@ -191,8 +187,6 @@ class simpleJDBC {
 					sqlCode = e.getErrorCode(); // Get SQLCODE
 					sqlState = e.getSQLState(); // Get SQLSTATE
 
-					// Your code to handle errors comes here;
-					// something more meaningful than a print would be good
 					System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
 				} 
 				
@@ -220,14 +214,12 @@ class simpleJDBC {
 					sqlCode = e.getErrorCode(); // Get SQLCODE
 					sqlState = e.getSQLState(); // Get SQLSTATE
 
-					// Your code to handle errors comes here;
-					// something more meaningful than a print would be good
 					System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
 				} 
 			}
 			
 			else if(option == 6) {
-				// Quit
+				
 				statement.close();
 				con.close();
 				reader.close();
